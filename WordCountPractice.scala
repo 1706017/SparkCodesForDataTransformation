@@ -17,3 +17,25 @@ object WordCountPractice extends App
   
   rdd4.collect.foreach(println)
 }
+
+//Equivalent Pyspark code 
+/*
+
+from pyspark import SparkContext
+
+sc = SparkContext("local[*]","wordcount")
+
+base_Rdd = sc.textFile("file:///C:/Users/KIIT/Desktop/DATA/wordcount-data.txt")
+
+rdd1 = base_Rdd.flatMap( lambda x : x.split(" "))
+
+mapped_rdd = rdd1.map( lambda x : (x[0].lower(),1))
+
+final_rdd = mapped_rdd.reduceByKey( lambda x,y : (x+y))
+
+result = final_rdd.collect()
+
+for i in result:
+    print(i)
+    
+    */
