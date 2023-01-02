@@ -15,3 +15,30 @@ object ValuableCustomers extends App
   
   sortedAmount.collect.foreach(println)
 }
+
+
+
+//Equivalent Pyspark code
+
+/*
+
+from pyspark import SparkContext
+
+sc = SparkContext("local[*]","wordcount")
+
+base_Rdd = sc.textFile("file:///C:/Users/KIIT/Desktop/DATA/wordcount-data.txt")
+
+extracted_rdd = base_Rdd.map(lambda x : (x.split(",")[0],float(x.split(",")[2])))
+
+total_Amount = extracted_rdd.reduceByKey( lambda x,y :(x+y))
+
+sorted = total_Amount.sortByKey().False
+
+result =sorted.collect()
+
+for i in result:
+    print(i)
+
+
+
+*/
